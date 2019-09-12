@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>REST SAMPLE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+</head>
+<body>
+<div id="posts">
+    <v-loading :show="show"></v-loading>
+    <div v-show="posts.length !== 0" class="posts">
+        <div class="posts-wrapper" style="display:flex;flex-wrap:wrap;">
+            <article class="post" v-for="post in posts" :key="post.id" style="width:50%;">
+                <p class="post_img">
+                    <img v-if="post.thumb" :src="post.thumb[0].source_url" class="thumb" style="max-width:100%;display:block;">
+                    <span v-else class="post_img_none">
+                        no-image
+                    </span>
+                </p>
+                <div class="post_contents-area">
+                    <!--<div v-if="post.category[0]" class="post_category-list">
+                        <span v-for="category in post.category[0]" :key="category.id" class="post_category">
+                            <a :href="category.link">{{ category.name }}</a>
+                        </span>
+                    </div>-->
+                    <a :href="post.link" class="post_link">
+                        <h3 class="post_title">{{ post.title }}</h3>
+                        <div class="post_content sp-none" v-html="post.content">
+                        </div>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
